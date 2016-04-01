@@ -1,0 +1,17 @@
+#!/usr/bin/env node
+var program = require('commander');
+var ysfdoc = require('../index.js');
+program
+.option('-p, --path [value]', '输入文档目录', './doc')
+.parse(process.argv);
+
+
+if(!program.path){
+    ysfdoc('/');
+}else{
+    ysfdoc(program.path)
+}
+
+
+
+

@@ -17,13 +17,15 @@ marked.setOptions({
 
 
 
-module.exports = function(options){
+var ysfdoc = function(options){
 	var tplPath = options.tplPath;
 
 	var render = function(realpath, dir) {
-		
 		var files = util.getAllFiles(realpath);
 		files.forEach(function (name) {
+			// 过滤markdown文件
+			if(!/\.md$/i.test(name)) return;
+
 			var str = fs.readFileSync(path.join(realpath, name)).toString();
 			var content = marked(str);
 			var compile = ejs.compile(fs.readFileSync(tplPath, 'utf-8'));
@@ -43,3 +45,6 @@ module.exports = function(options){
 
 	return render;
 }
+
+module.exports = ysfdoc;
+// ysfdoc({tplPath:'./template.ejs'})('./doc', './');

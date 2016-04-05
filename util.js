@@ -13,7 +13,7 @@ var renderNav = function(html){
 		end = '</ul>',
 		body = '';
 	var tree = [];
-	html.replace(/<(h[12]).*>(.*)<\/\1>?/g, function(str, tag, val){
+	html.replace(/<\s*(h[12])[^>]*>(.*?)<\s*\/\s*\1>/ig, function(str, tag, val){
 		if(str.indexOf('h1') > -1){
 			tree.push({
 				name : val,
@@ -21,6 +21,9 @@ var renderNav = function(html){
 			});
 			return;
 		};
+
+		// 解决重复h2功能
+		//if(str.split())
 		// insert last
 		tree[tree.length-1].child.push(val);
 	});

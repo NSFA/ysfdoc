@@ -5,8 +5,7 @@ const fs = require('fs');
  * @returns {*}
  */
 var getAllFiles = function(path){
-	path = path.replace(/^\./, '');
-	return files = fs.readdirSync(__dirname+path);
+	return files = fs.readdirSync(path);
 };
 
 var renderNav = function(html){

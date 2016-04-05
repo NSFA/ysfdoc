@@ -1,15 +1,32 @@
 #!/usr/bin/env node
 var program = require('commander');
-var ysfdoc = require('../index.js');
+var path = require('path');
+var dir = process.cwd();
+Alphabet = require('alphabetjs');
+
+var options = {}
+
+
 program
 .option('-p, --path [value]', '输入文档目录')
+.option('-t, --template [value]', '模板路径,现仅支持ejs模板')
 .parse(process.argv);
 
+console.log(Alphabet('SAILFISH','planar'));
+
+if(!program.template){
+   options.tplPath = path.resolve(__dirname, '../template.ejs');
+}else{
+    options.tplPath = path.resolve(dir, program.template);
+}
+
+var ysfdoc = require('../app.js')(options);
 
 if(!program.path){
-    ysfdoc('/');
+    ysfdoc(dir);
 }else{
-    ysfdoc(program.path)
+    var realPath = path.resolve(dir, program.path);
+    ysfdoc(realPath, dir);
 }
 
 

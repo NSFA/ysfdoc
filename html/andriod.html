@@ -61,157 +61,158 @@
 </head>
 <body >
 <div class="g-flex">
+    ddd
     <div class="g-nav">
         <ul class="m-nav"><li><h1><a href="#业务模板">业务模板</a></h1><ul class="nav_levtwo"><li><h2><a href="#Flex我们一起去踩坑">Flex我们一起去踩坑</a></h2></li><li><h2><a href="#滚动条的替换原则">滚动条的替换原则</a></h2></li></ul></li><li><h1><a href="#业务模板">业务模板</a></h1><ul class="nav_levtwo"><li><h2><a href="#Flex我们一起去踩坑">Flex我们一起去踩坑</a></h2></li><li><h2><a href="#滚动条的替换原则">滚动条的替换原则</a></h2></li></ul></li><li><h1><a href="#业务模板">业务模板</a></h1><ul class="nav_levtwo"><li><h2><a href="#Flex我们一起去踩坑">Flex我们一起去踩坑</a></h2></li><li><h2><a href="#滚动条的替换原则">滚动条的替换原则</a></h2></li></ul></li><li><h1><a href="#业务模板">业务模板</a></h1><ul class="nav_levtwo"><li><h2><a href="#Flex我们一起去踩坑">Flex我们一起去踩坑</a></h2></li><li><h2><a href="#滚动条的替换原则">滚动条的替换原则</a></h2></li></ul></li></ul>
     </div>
     <div class="g-container">
         <div class="">
-            <h1 id="业务模板">业务模板</h1><pre><code class="lang-html">    &lt;!-- 内嵌的部分 --&gt;
-    &lt;div class=&quot;g-main g-main-boss&quot;&gt;
-        &lt;!-- 二级栏目导航 --&gt;
-        &lt;div class=&quot;g-tab&quot;&gt;&lt;/div&gt;
-        &lt;!-- 主体业务逻辑 --&gt;
-        &lt;div class=&quot;g-mnc g-mnc-xx&quot;&gt;
+            <h1 id="业务模板">业务模板</h1><pre><code class="lang-html">    <span class="hljs-comment">&lt;!-- 内嵌的部分 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"g-main g-main-boss"</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- 二级栏目导航 --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"g-tab"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- 主体业务逻辑 --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"g-mnc g-mnc-xx"</span>&gt;</span>
             xxxx
-        &lt;/div&gt;
-    &lt;/div&gt;
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </code></pre>
 <h2 id="Flex我们一起去踩坑">Flex我们一起去踩坑</h2><pre><code class="lang-html">
-    &lt;div class=&quot;g-mnc g-mnc-xx&quot;&gt;
+    &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"g-mnc g-mnc-xx"</span>&gt;
         根据不同的业务逻辑去定内部的布局(row 或者 column)
-    &lt;/div&gt;
+    &lt;/<span class="hljs-keyword">div</span>&gt;
 </code></pre>
-<pre><code class="lang-html">    &lt;!-- 如果出现flex失去布局的情况请在多嵌套一层 --&gt;
-    &lt;div class=&quot;g-row&quot;&gt;
-        &lt;div class=&quot;g-flex-row&quot;&gt;
+<pre><code class="lang-html">    <span class="hljs-comment">&lt;!-- 如果出现flex失去布局的情况请在多嵌套一层 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"g-row"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"g-flex-row"</span>&gt;</span>
 
-        &lt;/div&gt;
-    &lt;/div&gt;
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </code></pre>
-<pre><code class="lang-css">    .g-row{
-        position:relative;
+<pre><code class="lang-css">    <span class="hljs-selector-class">.g-row</span>{
+        <span class="hljs-attribute">position</span>:relative;
     }
-    .g-flex-row{
-        display:flex;
-        flex-direction: row;
+    <span class="hljs-selector-class">.g-flex-row</span>{
+        <span class="hljs-attribute">display</span>:flex;
+        <span class="hljs-attribute">flex-direction</span>: row;
     }
-    .g-flex-row{
-        display:flex;
-        flex-direction: column;
+    <span class="hljs-selector-class">.g-flex-row</span>{
+        <span class="hljs-attribute">display</span>:flex;
+        <span class="hljs-attribute">flex-direction</span>: column;
     }
 </code></pre>
 <h2 id="滚动条的替换原则">滚动条的替换原则</h2><p>由于滚动条会占位置，先部分替换</p>
 <blockquote>
 <p>原则：全局的滚动条先用原生的替换掉， 模块里面的滚动条，先用自定义的~</p>
 </blockquote>
-<h1 id="业务模板">业务模板</h1><pre><code class="lang-html">    &lt;!-- 内嵌的部分 --&gt;
-    &lt;div class=&quot;g-main g-main-boss&quot;&gt;
-        &lt;!-- 二级栏目导航 --&gt;
-        &lt;div class=&quot;g-tab&quot;&gt;&lt;/div&gt;
-        &lt;!-- 主体业务逻辑 --&gt;
-        &lt;div class=&quot;g-mnc g-mnc-xx&quot;&gt;
+<h1 id="业务模板">业务模板</h1><pre><code class="lang-html">    <span class="hljs-comment">&lt;!-- 内嵌的部分 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"g-main g-main-boss"</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- 二级栏目导航 --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"g-tab"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- 主体业务逻辑 --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"g-mnc g-mnc-xx"</span>&gt;</span>
             xxxx
-        &lt;/div&gt;
-    &lt;/div&gt;
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </code></pre>
 <h2 id="Flex我们一起去踩坑">Flex我们一起去踩坑</h2><pre><code class="lang-html">
-    &lt;div class=&quot;g-mnc g-mnc-xx&quot;&gt;
+    &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"g-mnc g-mnc-xx"</span>&gt;
         根据不同的业务逻辑去定内部的布局(row 或者 column)
-    &lt;/div&gt;
+    &lt;/<span class="hljs-keyword">div</span>&gt;
 </code></pre>
-<pre><code class="lang-html">    &lt;!-- 如果出现flex失去布局的情况请在多嵌套一层 --&gt;
-    &lt;div class=&quot;g-row&quot;&gt;
-        &lt;div class=&quot;g-flex-row&quot;&gt;
+<pre><code class="lang-html">    <span class="hljs-comment">&lt;!-- 如果出现flex失去布局的情况请在多嵌套一层 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"g-row"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"g-flex-row"</span>&gt;</span>
 
-        &lt;/div&gt;
-    &lt;/div&gt;
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </code></pre>
-<pre><code class="lang-css">    .g-row{
-        position:relative;
+<pre><code class="lang-css">    <span class="hljs-selector-class">.g-row</span>{
+        <span class="hljs-attribute">position</span>:relative;
     }
-    .g-flex-row{
-        display:flex;
-        flex-direction: row;
+    <span class="hljs-selector-class">.g-flex-row</span>{
+        <span class="hljs-attribute">display</span>:flex;
+        <span class="hljs-attribute">flex-direction</span>: row;
     }
-    .g-flex-row{
-        display:flex;
-        flex-direction: column;
+    <span class="hljs-selector-class">.g-flex-row</span>{
+        <span class="hljs-attribute">display</span>:flex;
+        <span class="hljs-attribute">flex-direction</span>: column;
     }
 </code></pre>
 <h2 id="滚动条的替换原则">滚动条的替换原则</h2><p>由于滚动条会占位置，先部分替换</p>
 <blockquote>
 <p>原则：全局的滚动条先用原生的替换掉， 模块里面的滚动条，先用自定义的~</p>
 </blockquote>
-<h1 id="业务模板">业务模板</h1><pre><code class="lang-html">    &lt;!-- 内嵌的部分 --&gt;
-    &lt;div class=&quot;g-main g-main-boss&quot;&gt;
-        &lt;!-- 二级栏目导航 --&gt;
-        &lt;div class=&quot;g-tab&quot;&gt;&lt;/div&gt;
-        &lt;!-- 主体业务逻辑 --&gt;
-        &lt;div class=&quot;g-mnc g-mnc-xx&quot;&gt;
+<h1 id="业务模板">业务模板</h1><pre><code class="lang-html">    <span class="hljs-comment">&lt;!-- 内嵌的部分 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"g-main g-main-boss"</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- 二级栏目导航 --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"g-tab"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- 主体业务逻辑 --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"g-mnc g-mnc-xx"</span>&gt;</span>
             xxxx
-        &lt;/div&gt;
-    &lt;/div&gt;
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </code></pre>
 <h2 id="Flex我们一起去踩坑">Flex我们一起去踩坑</h2><pre><code class="lang-html">
-    &lt;div class=&quot;g-mnc g-mnc-xx&quot;&gt;
+    &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"g-mnc g-mnc-xx"</span>&gt;
         根据不同的业务逻辑去定内部的布局(row 或者 column)
-    &lt;/div&gt;
+    &lt;/<span class="hljs-keyword">div</span>&gt;
 </code></pre>
-<pre><code class="lang-html">    &lt;!-- 如果出现flex失去布局的情况请在多嵌套一层 --&gt;
-    &lt;div class=&quot;g-row&quot;&gt;
-        &lt;div class=&quot;g-flex-row&quot;&gt;
+<pre><code class="lang-html">    <span class="hljs-comment">&lt;!-- 如果出现flex失去布局的情况请在多嵌套一层 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"g-row"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"g-flex-row"</span>&gt;</span>
 
-        &lt;/div&gt;
-    &lt;/div&gt;
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </code></pre>
-<pre><code class="lang-css">    .g-row{
-        position:relative;
+<pre><code class="lang-css">    <span class="hljs-selector-class">.g-row</span>{
+        <span class="hljs-attribute">position</span>:relative;
     }
-    .g-flex-row{
-        display:flex;
-        flex-direction: row;
+    <span class="hljs-selector-class">.g-flex-row</span>{
+        <span class="hljs-attribute">display</span>:flex;
+        <span class="hljs-attribute">flex-direction</span>: row;
     }
-    .g-flex-row{
-        display:flex;
-        flex-direction: column;
+    <span class="hljs-selector-class">.g-flex-row</span>{
+        <span class="hljs-attribute">display</span>:flex;
+        <span class="hljs-attribute">flex-direction</span>: column;
     }
 </code></pre>
 <h2 id="滚动条的替换原则">滚动条的替换原则</h2><p>由于滚动条会占位置，先部分替换</p>
 <blockquote>
 <p>原则：全局的滚动条先用原生的替换掉， 模块里面的滚动条，先用自定义的~</p>
 </blockquote>
-<h1 id="业务模板">业务模板</h1><pre><code class="lang-html">    &lt;!-- 内嵌的部分 --&gt;
-    &lt;div class=&quot;g-main g-main-boss&quot;&gt;
-        &lt;!-- 二级栏目导航 --&gt;
-        &lt;div class=&quot;g-tab&quot;&gt;&lt;/div&gt;
-        &lt;!-- 主体业务逻辑 --&gt;
-        &lt;div class=&quot;g-mnc g-mnc-xx&quot;&gt;
+<h1 id="业务模板">业务模板</h1><pre><code class="lang-html">    <span class="hljs-comment">&lt;!-- 内嵌的部分 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"g-main g-main-boss"</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- 二级栏目导航 --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"g-tab"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- 主体业务逻辑 --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"g-mnc g-mnc-xx"</span>&gt;</span>
             xxxx
-        &lt;/div&gt;
-    &lt;/div&gt;
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </code></pre>
 <h2 id="Flex我们一起去踩坑">Flex我们一起去踩坑</h2><pre><code class="lang-html">
-    &lt;div class=&quot;g-mnc g-mnc-xx&quot;&gt;
+    &lt;<span class="hljs-keyword">div</span> <span class="hljs-built_in">class</span>=<span class="hljs-string">"g-mnc g-mnc-xx"</span>&gt;
         根据不同的业务逻辑去定内部的布局(row 或者 column)
-    &lt;/div&gt;
+    &lt;/<span class="hljs-keyword">div</span>&gt;
 </code></pre>
-<pre><code class="lang-html">    &lt;!-- 如果出现flex失去布局的情况请在多嵌套一层 --&gt;
-    &lt;div class=&quot;g-row&quot;&gt;
-        &lt;div class=&quot;g-flex-row&quot;&gt;
+<pre><code class="lang-html">    <span class="hljs-comment">&lt;!-- 如果出现flex失去布局的情况请在多嵌套一层 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"g-row"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"g-flex-row"</span>&gt;</span>
 
-        &lt;/div&gt;
-    &lt;/div&gt;
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 </code></pre>
-<pre><code class="lang-css">    .g-row{
-        position:relative;
+<pre><code class="lang-css">    <span class="hljs-selector-class">.g-row</span>{
+        <span class="hljs-attribute">position</span>:relative;
     }
-    .g-flex-row{
-        display:flex;
-        flex-direction: row;
+    <span class="hljs-selector-class">.g-flex-row</span>{
+        <span class="hljs-attribute">display</span>:flex;
+        <span class="hljs-attribute">flex-direction</span>: row;
     }
-    .g-flex-row{
-        display:flex;
-        flex-direction: column;
+    <span class="hljs-selector-class">.g-flex-row</span>{
+        <span class="hljs-attribute">display</span>:flex;
+        <span class="hljs-attribute">flex-direction</span>: column;
     }
 </code></pre>
 <h2 id="滚动条的替换原则">滚动条的替换原则</h2><p>由于滚动条会占位置，先部分替换</p>

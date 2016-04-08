@@ -1,0 +1,280 @@
+
+/* reset */
+html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0;padding:0;outline:none;}
+header,footer,section,article,aside,nav,hgroup,address,figure,figcaption,menu,details{display:block;}
+table{border-collapse:collapse;border-spacing:0;}
+caption,th{text-align:left;font-weight:normal;}
+html,body,fieldset,img,iframe,abbr{border:0;}
+i,cite,em,var,address,dfn{font-style:normal;}
+[hidefocus],summary{outline:0;}
+li{list-style:none;}
+h1,h2,h3,h4,h5,h6,small{font-size:100%;}
+sup,sub{font-size:83%;}
+pre,code,kbd,samp{font-family:inherit;}
+q:before,q:after{content:none;}
+textarea{overflow:auto;resize:none;}
+label,summary{cursor:default;}
+a,button{cursor:pointer;}
+h1,h2,h3,h4,h5,h6,em,strong,b{font-weight:normal;}
+del,ins,u,s,a,a:hover,a:active,a:focus{text-decoration:none;outline:none;}
+body,textarea,input,button,select,keygen,legend{font:$fs0/1.14 $ff-yahei;outline:0;}
+body{cursor:default;}
+input::-ms-clear,input::-ms-reveal{display:none;}
+button{border:0}
+input{$border-radius:2px;}
+
+/* others */
+
+html, body {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  font-family: 'Microsoft YAHEI', '微软雅黑';
+}
+
+/* box */
+
+.g-box {
+  position: relative;
+  color: #dddddd;
+  font-size: 18px;
+  height: 100%;
+  width: 1024px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.g-box .g-nav a, .g-box .g-nav a:hover, .g-box .g-nav a:visited, .g-box .g-nav a:active {
+  color: inherit;
+}
+.g-box .g-nav li {
+  position: relative;
+}
+/* 滚动条 */
+.g-box .g-nav::-webkit-scrollbar, .g-box .g-container::-webkit-scrollbar {
+    width: 7px;
+}
+
+.g-box .g-nav::-webkit-scrollbar-button, .g-box .g-container::-webkit-scrollbar-button {
+    display: none;
+}
+
+.g-box .g-nav::-webkit-scrollbar-thumb, .g-box .g-container::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background: #ccc;
+}
+
+.g-box .g-nav::-webkit-scrollbar-track, .g-box .g-container::-webkit-scrollbar-track {
+    width: 7px;
+    background: #ebebeb;
+}
+
+.g-box .g-nav::-webkit-scrollbar-track-piece, .g-box .g-container::-webkit-scrollbar-track-piece {
+    background: #ebebeb;
+}
+
+/* nav */
+
+.g-box .g-nav {
+  width: 246px;
+  height: 100%;
+  background-color: #f7f7f7;
+  border-left: 1px solid #e6e6e6;
+  border-right: 1px solid #e6e6e6;
+  overflow-y: auto;
+}
+.g-box .g-nav h1 {
+  /* 1级标题 */
+  display: block;
+  height: 52px;
+  line-height: 52px;
+  font-size: 14px;
+  color: #222;
+  border-bottom: 1px solid #e6e6e6;
+  cursor: pointer;
+}
+.g-box .g-nav h1 a {
+  padding: 0 40px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.g-box .g-nav h2 {
+  /* 2级标题 */
+  display: block;
+  height: 43px;
+  line-height: 43px;
+  font-size: 14px;
+  color: #222;
+  border-bottom: 1px solid #fff;
+  background: #ededed;
+  cursor: pointer;
+}
+.g-box .g-nav h2 a {
+  padding: 0 20px 0 60px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.g-box .g-nav h1:hover, .g-box .g-nav .show h1, .g-box .g-nav .select h1, .g-box .g-nav .over h1, .g-box .g-nav h2:hover, .g-box .g-nav .select h2 {
+  /* hover或选中状态 */
+  color: #5092e1;
+}
+.g-box .g-nav li:last-child h2 {
+  border-bottom: none;
+}
+.g-box .nav_levtwo {
+  display: none;
+}
+.g-box .show .nav_levtwo {
+  display: block;
+}
+.g-box .u-icon {
+  position: absolute;
+  right: 21px;
+  top: 19px;
+  height: 13px;
+  width: 13px;
+}
+.g-box .u-icon-down {
+  width: 7px;
+  cursor: pointer;
+  background: url(/res/doc/arrow.png) no-repeat;
+}
+.g-box .g-nav li:hover .u-icon-down, .g-box .g-nav .select .u-icon-down {
+  background: url(/res/doc/arrow_hover.png) no-repeat;
+}
+.g-box .g-nav li.show .u-icon-down {
+  top: 22px;
+  right: 18px;
+  width: 13px;
+  height: 7px;
+  background: url(/res/doc/arrow_now.png) no-repeat;
+}
+.g-box .u-icon-up {
+  background: green;
+}
+
+/* container */
+
+.g-box .g-container {
+  position: absolute;
+  top: 0;
+  left: 248px;
+  right: 0;
+  bottom: 0;
+  padding: 0 30px 20px;
+  background-color: #fff;
+  font-size: 14px;
+  color: #666;
+  overflow-y: scroll;
+}
+.g-box .g-container h1 {
+  margin: 20px auto;
+  height: 50px;
+  color: #333;
+  background: #fff;
+  line-height: 40px;
+  font-size: 28px;
+  border-bottom: 1px solid #ddd;
+}
+.g-box .g-container h2 {
+  margin: 20px 0 10px 0;
+  margin-top: 30px;
+  color: #3dafcc;
+  font-size: 22px;
+}
+.g-box .g-container p {
+  margin: 8px 3px;
+  line-height: 30px;
+  font-size: 14px;
+  text-indent: 0em;
+}
+.g-box .g-container ul, .g-box .g-container ol {
+  margin: 8px 8px;
+  font-size: 14px;
+}
+.g-box .g-container li {
+  margin: 5px 0;
+  margin-left: 1em;
+  list-style: inherit;
+}
+.g-box .g-container ul li {
+  list-style: none;
+  list-style-image: url(/res/doc/list_type.png);
+  list-style-type: square;
+}
+.g-box .g-container a {
+  color: #659AD0;
+  word-break: break-all;
+  text-decoration: none;
+}
+.g-box .g-container blockquote {
+  margin: 1em -0.5em;
+  font-weight: bold;
+}
+.g-box .g-container pre {
+  position: relative;
+  width: auto;
+}
+.g-box .g-container code {
+  display: inline-block;
+  margin: 2px 5px;
+  padding: 0 3px;
+  overflow: hidden;
+  background: #E5F0FF;
+  font-size: 15px;
+  font-family: monospace;
+  word-break: break-all;
+  vertical-align: middle;
+}
+.g-box .g-container pre code {
+  padding: 15px 35px 15px 15px;
+  width: 92%;
+  max-width: 800px;
+  background: #f5f5ff;
+  border: 1px solid #DCDCEA;
+  border-radius: 5px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.g-box .g-container pre code.copy {
+  background: #e7e3f2;
+}
+.g-box .g-container pre .copy_btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #bf3907;
+  cursor: pointer;
+  font-size: 12px;
+}
+.g-box .g-container strong, .g-box .g-container b {
+  font-weight: bold;
+}
+.g-box .g-container table {
+  max-width: 800px;
+  border-spacing: 0;
+  border-color: #eee;
+  font-size: 13px;
+  margin: 10px 2em;
+}
+.g-box .g-container th, .g-box .g-container td {
+  padding: 4px 8px;
+  overflow: hidden;
+  word-break: break-word;
+  min-width: 3em;
+  border: 1px solid #666;
+}
+.g-box .g-container th {
+  font-weight: bold;
+}
+.g-box .g-container table {
+
+}
+.g-box .g-container table {
+
+}

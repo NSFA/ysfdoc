@@ -2,32 +2,36 @@
 var program = require('commander');
 var path = require('path');
 var dir = process.cwd();
-Alphabet = require('alphabetjs');
 
 var options = {}
-
-
 program
 .option('-p, --path [value]', '输入文档目录')
 .option('-t, --template [value]', '模板路径,现仅支持ejs模板')
+.option('-s, --suffix [value]', '输出文件的后缀, 默认为html')
 .parse(process.argv);
 
-console.log(Alphabet('SAILFISH','planar'));
-
+// 模板路径
 if(!program.template){
    options.tplPath = path.resolve(__dirname, '../template.ejs');
 }else{
     options.tplPath = path.resolve(dir, program.template);
 }
 
-var ysfdoc = require('../app.js')(options);
+// 文件输出后缀
+options.suffix = program.suffix || 'html';
 
+console.log('--------------------------------\n       七鱼文档生成工具\n--------------------------------\n\n')
+
+// 配置
+
+var ysfdoc = require('../app.js')(options);
 if(!program.path){
     ysfdoc(dir);
 }else{
     var realPath = path.resolve(dir, program.path);
     ysfdoc(realPath, dir);
 }
+
 
 
 

@@ -1,4 +1,5 @@
-const fs = require('fs');
+var  fs = require('fs');
+var path = require('path');
 /**
  * 获取所有文件名
  * @param path
@@ -54,7 +55,25 @@ var renderNav = function(html){
 };
 
 
+var copyAllFiles = function(originDir, targetDir){
+	var folders = ['css','img','js'];
+	folders.forEach(function(folder){
+		var files = fs.readdirSync(originDir + '/' + folder),
+			tDir = path.join(targetDir, folder),
+			oDir = path.join(originDir, folder);
+
+		
+		try{
+			fs.mkdirSync(tDir);
+		}catch(e){}
+		
+		files.forEach(function(file){
+			fs.writeFileSync(path.join(tDir, file),fs.readFileSync(path.join(oDir,file)))
+		})
+	})
+}
 module.exports = {
 	getAllFiles: getAllFiles,
-	renderNav : renderNav
+	renderNav : renderNav,
+	copyAllFiles: copyAllFiles
 }

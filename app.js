@@ -19,11 +19,12 @@ marked.setOptions({
 
 var ysfdoc = function(options){
 	var tplPath = options.tplPath;
+	var suffix = options.suffix;
 
 	var render = function(realpath, dir) {
+
 		var files = util.getAllFiles(realpath);
 		files.forEach(function (name) {
-
 			var str = fs.readFileSync(path.join(realpath, name)).toString();
 			var content = marked(str);
 			var compile = ejs.compile(fs.readFileSync(tplPath, 'utf-8'));
@@ -32,15 +33,16 @@ var ysfdoc = function(options){
 			// 检测目录是否存在
 			try {
 				fs.mkdirSync(path.join(dir, 'html'));
-				console.log('当前路径下面没有html, 但系统已经帮你创建了, 请放心使用...'.underline.red);
+				console.log('当前路径下面没有html, 但系统已经帮你创建了, 请放心使用...'.underline.yellow);
 			} catch (err) {
-				
-				
+
 			}
-			fs.writeFile(path.join(dir, '/html/', name.replace(/\.(\w+)$/g, '.html')), html, function (err, data) {
+			fs.writeFile(path.join(dir, '/html/', name.replace(/\.(\w+)$/g, '.'+suffix)), html, function (err, data) {
 				if (err) throw err;
-				console.log('解析' + name + '文档完成, 输出目录为html/' + name.replace(/\.md$/g, '.html'));
-			})
+				console.log('解析' + name + '文档完成, 输出目录为html/' + name.replace(/\.md$/g, '.'+suffix));
+			});
+
+			util.copyAllFiles(path.resolve(__dirname , './res/'), path.join(dir, '/html'))
 		});
 	};
 
@@ -48,4 +50,3 @@ var ysfdoc = function(options){
 }
 
 module.exports = ysfdoc;
-// ysfdoc({tplPath:'./template.ejs'})('./doc', './');

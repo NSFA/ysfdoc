@@ -32,6 +32,10 @@
   function isLevel1(node) {
     return $(node).hasClass('j-flag-levone') && $(node).parent().next('ul.nav_levtwo').length
   }
+  // 是否二级标题，需传入二级标题里的a
+  function isLevel2(node) {
+    return $(node).parents('.nav_levtwo').length;
+  }
   // 获取第一个二级标题，需传入一级标题里的a
   function getFirstLevel2(node) {
     if(!$(node).hasClass('j-flag-levone')) return;
@@ -78,7 +82,16 @@
      if(isLevel1(node)) node = getFirstLevel2(node);
      nowSel.parents('.select').removeClass('select');
      nowSel.parents('li.show').removeClass('show');
+     if(isLevel2(nowSel)) {
+       // 如果当前是二级标题，删除一级标题的选中展开标记
+       $(nowSel).parents('.nav_levtwo').parent().removeClass('selshow');
+     }
+
      $(node).addClass('select');
+     if(isLevel2(node)) {
+       // 如果当前是二级标题，追加一级标题的选中展开标记
+       $(node).parents('.nav_levtwo').parent().addClass('selshow');
+     }
      showLevel2(node);
 
      $('.j-cnt').animate({
@@ -154,9 +167,17 @@
   // 监听滚动事件
   $('.j-cnt').scroll(function() {
     var scrollNode = getScrollNode($(this));
-    $('.j-nav .select').removeClass('select');
+    var lastSel = $('.j-nav .select').removeClass('select');
+    if(isLevel2(lastSel)) {
+      // 如果当前是二级标题，删除一级标题的选中展开标记
+      $(lastSel).parents('.nav_levtwo').parent().removeClass('selshow');
+    }
     // 在直属的li上加select
     var node = $('.j-nav a[href="' + scrollNode + '"]').parent().parent().addClass('select');
+    if(isLevel2(node)) {
+      // 如果当前是二级标题，添加一级标题的选中展开标记
+      $(node).parents('.nav_levtwo').parent().addClass('selshow');
+    }
 
     // 展开二级目录
     showLevel2(node);

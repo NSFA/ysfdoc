@@ -17,16 +17,18 @@ if(!program.template){
     options.tplPath = path.resolve(dir, program.template);
 }
 
+// 默认路径为当前路径
+
 // 文件输出后缀
 options.suffix = program.suffix || 'html';
 
-console.log('--------------------------------\n       七鱼文档生成工具\n--------------------------------\n\n')
+console.log('--------------------------------\n       七鱼文档生成工具\n--------------------------------\n')
 
 // 配置
 
 var ysfdoc = require('../app.js')(options);
 if(!program.path){
-    ysfdoc(dir);
+    ysfdoc(dir, dir);
 }else{
     var realPath = path.resolve(dir, program.path);
     ysfdoc(realPath, dir);

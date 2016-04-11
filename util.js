@@ -36,10 +36,10 @@ var renderNav = function(html){
 	});
 
 	tree.forEach(function(itm, index){
-		body += '<li><h1><a href="#'+itm.name+'" class="j-flag-levone">' + itm.name + '</a></h1>';
+		body += '<li><h2><a href="#'+itm.name+'" class="j-flag-levone">' + itm.name + '</a></h2>';
 
 		itm.child.forEach(function(val, index){
-			var block = '<li><h2><a href="#'+val+'">'+val+'</a></h2></li>';
+			var block = '<li><h3><a href="#'+val+'">'+val+'</a></h3></li>';
 			if(index == 0){
 				body += '<ul class="nav_levtwo">' + block
 			}else if(index == itm.child.length-1){

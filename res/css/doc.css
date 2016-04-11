@@ -9,6 +9,10 @@ header, footer, section, article, aside, nav, hgroup, address, figure, figcaptio
     display: block;
 }
 
+img{
+    width:100%;
+}
+
 table {
     border-collapse: collapse;
     border-spacing: 0;
@@ -203,7 +207,7 @@ html, body {
     overflow-y: auto;
 }
 
-.g-box .g-nav h1 {
+.g-box .g-nav h2 {
     /* 1级标题 */
     display: block;
     height: 52px;
@@ -214,7 +218,7 @@ html, body {
     cursor: pointer;
 }
 
-.g-box .g-nav h1 a {
+.g-box .g-nav h2 a {
     padding: 0 40px;
     position: absolute;
     top: 0;
@@ -223,7 +227,7 @@ html, body {
     right: 0;
 }
 
-.g-box .g-nav h2 {
+.g-box .g-nav h3 {
     /* 2级标题 */
     display: block;
     height: 43px;
@@ -235,7 +239,7 @@ html, body {
     cursor: pointer;
 }
 
-.g-box .g-nav h2 a {
+.g-box .g-nav h3 a {
     padding: 0 20px 0 60px;
     position: absolute;
     top: 0;
@@ -244,12 +248,12 @@ html, body {
     right: 0;
 }
 
-.g-box .g-nav h1:hover, .g-box .g-nav .select h1, .g-box .g-nav .selshow h1, .g-box .g-nav .over h1, .g-box .g-nav h2:hover, .g-box .g-nav .select h2 {
+.g-box .g-nav h2:hover, .g-box .g-nav .select h2, .g-box .g-nav .selshow h2, .g-box .g-nav .over h2, .g-box .g-nav h3:hover, .g-box .g-nav .select h3 {
     /* hover或选中状态 */
     color: #5092e1;
 }
 
-.g-box .g-nav li:last-child h2 {
+.g-box .g-nav li:last-child h3 {
     border-bottom: none;
 }
 
@@ -329,7 +333,18 @@ html, body {
     font-size: 22px;
 }
 
+.g-box .g-container h3{
+    font-size: 18px;
+    margin-top:20px;
+}
+
+.g-box .g-container h4{
+    font-size: 15px;
+    margin-top:15px;
+}
+
 .g-box .g-container p {
+    position:relative;
     margin: 8px 3px;
     line-height: 30px;
     font-size: 14px;

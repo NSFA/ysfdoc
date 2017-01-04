@@ -23,12 +23,26 @@ var ysfdoc = function(options){
 
 	var render = function(realpath, dir) {
 
-		var files = util.getAllFiles(realpath);
+
+
+		if(fs.lstatSync(realpath).isDirectory()){
+			var files = util.getAllFiles(realpath);
+			var flag = true;
+		}else{
+			var files = [realpath];
+			var flag = false;
+		}
+
 		files.forEach(function (name) {
-			var str = fs.readFileSync(path.join(realpath, name)).toString();
+			var file = flag ? path.join(realpath, name) : path.resolve(process.cwd(), name);
+
+			var str = fs.readFileSync(file).toString();
 			var content = marked(str);
 			var compile = ejs.compile(fs.readFileSync(tplPath, 'utf-8'));
-			var html = compile({content: content, nav: util.renderNav(content)});
+			var arr  = file.split(split);
+			var name = arr[arr.length-1];
+
+			var html = compile({content: content, nav: util.renderNav(content), name : name });
 
 			// 检测目录是否存在
 			try {
@@ -37,7 +51,9 @@ var ysfdoc = function(options){
 			} catch (err) {
 
 			}
-			fs.writeFile(path.join(dir, '/html/', name.replace(/\.(\w+)$/g, '.'+suffix)), html, function (err, data) {
+
+
+			fs.writeFile((flag ? path.join(dir, '/html/', name.replace(/\.(\w+)$/g, '.'+suffix)) : path.resolve(dir, '/html/', name.replace(/\.(\w+)$/g, '.'+suffix))), html, function (err, data) {
 				if (err) throw err;
 				console.log('解析' + name + '文档完成, 输出目录为html/' + name.replace(/\.md$/g, '.'+suffix));
 			});

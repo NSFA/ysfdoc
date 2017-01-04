@@ -37,9 +37,17 @@ var renderNav = function(html){
 
 	tree.forEach(function(itm, index){
 		body += '<li><h2><a href="#'+itm.name+'" class="j-flag-levone">' + itm.name + '</a></h2>';
-
+		var len =  itm.child.length;
 		itm.child.forEach(function(val, index){
 			var block = '<li><h3><a href="#'+val+'">'+val+'</a></h3></li>';
+
+
+			if(len == 1){
+				body += '<ul class="nav_levtwo">' + block + '</ul>';
+				return;
+			}
+			
+			
 			if(index == 0){
 				body += '<ul class="nav_levtwo">' + block
 			}else if(index == itm.child.length-1){

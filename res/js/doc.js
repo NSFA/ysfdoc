@@ -51,8 +51,13 @@
     if(isLevel1(node))  nav = $(node).parent().next('ul.nav_levtwo');
 
     if(nav.length) {
-      $('.j-nav .show .nav_levtwo').css('display', 'none').parent().removeClass('show');
-      nav.css('display', 'block').parent().addClass('show');
+      $('.j-nav .show .nav_levtwo').not(nav).slideUp(200, function(){
+        $('.j-nav .show .nav_levtwo').css('display', 'none').parent().removeClass('show');
+      })
+    
+      nav.slideDown(200, function(){
+        nav.css('display', 'block').parent().addClass('show');
+      })
     }
   }
   /**
@@ -78,25 +83,7 @@
      // 相同锚点不处理
      if(nowSel.attr('href') === to) return;
 
-     // 针对有二级标题的一级标题，点击一级标题相当于点击第一个二级标题
-     if(isLevel1(node)) node = getFirstLevel2(node);
-     nowSel.parents('.select').removeClass('select');
-     nowSel.parents('li.show').removeClass('show');
-     if(isLevel2(nowSel)) {
-       // 如果当前是二级标题，删除一级标题的选中展开标记
-       $(nowSel).parents('.nav_levtwo').parent().removeClass('selshow');
-     }
-
-     $(node).addClass('select');
-     if(isLevel2(node)) {
-       // 如果当前是二级标题，追加一级标题的选中展开标记
-       $(node).parents('.nav_levtwo').parent().addClass('selshow');
-     }
-     showLevel2(node);
-
-     $('.j-cnt').animate({
-       scrollTop: getOffset($(to).get(0), $('.j-cnt').get(0)).y
-     }, 200);
+     if (isLevel1(node)) showLevel2(node);
    }
   $('.j-nav a[href!="#"]').click(onClickLink);
   /**
@@ -136,17 +123,27 @@
   // 获取id列表
   var ids = [];
   $('.j-nav a[href!="#"]').each(function() {
-    if(isLevel1(this)) {
-      // 过滤有二级标题的一级标题
-      return;
-    }
+    // if(isLevel1(this)) {
+    //   // 过滤有二级标题的一级标题
+    //   return;
+    // }
     ids.push($(this).attr('href'));
   });
   // 获取id和位移映射表
   var idMap = {};
   for(var i=0,len=ids.length,itm; i<len; i++) {
     itm = ids[i];
-    idMap[itm] = getOffset($(itm).get(0), $('.j-cnt').get(0)).y;
+    if (itm.indexOf('(') != -1 || itm.indexOf('(') != -1) {
+      itm = itm.replace(/\(/g, '\\(');
+      itm = itm.replace(/\)/g, '\\)');
+    } else {
+
+    }
+    try{
+      idMap[itm] = getOffset($(itm).get(0), $('.j-cnt').get(0)).y;
+    }catch(e){
+
+    }
   }
   // 获取当时滚动到的元素
   function getScrollNode(node) {
@@ -167,20 +164,29 @@
   // 监听滚动事件
   $('.j-cnt').scroll(function() {
     var scrollNode = getScrollNode($(this));
-    var lastSel = $('.j-nav .select').removeClass('select');
-    if(isLevel2(lastSel)) {
-      // 如果当前是二级标题，删除一级标题的选中展开标记
-      $(lastSel).parents('.nav_levtwo').parent().removeClass('selshow');
-    }
-    // 在直属的li上加select
-    var node = $('.j-nav a[href="' + scrollNode + '"]').parent().parent().addClass('select');
-    if(isLevel2(node)) {
-      // 如果当前是二级标题，添加一级标题的选中展开标记
-      $(node).parents('.nav_levtwo').parent().addClass('selshow');
-    }
+    var node = $('.j-nav a[href="' + scrollNode + '"]');
 
-    // 展开二级目录
-    showLevel2(node);
+     // 将其他的标题的高亮去掉
+
+    $('.j-nav .selshow').each(function(index,elem){
+        $(elem).removeClass('selshow');
+    })
+
+     $('.j-nav .nav_levtwo .select').each(function(index,elem){
+        $(elem).removeClass('select');
+     })
+
+    if($(node).hasClass('j-flag-levone')) {
+       $(node).parent().parent().addClass('selshow');
+     }
+
+     // 二级标题选中高亮
+     if (isLevel2(node)) {
+      $(node).parent().parent().addClass('select');
+     }
+
+     if (isLevel1(node)) showLevel2(node);
+
   });
   // 添加复制按钮
   $('.j-cnt pre code').before('<div class="copy_btn" title="点击复制代码" data-clipboard-target="" data-clipboard-text="">复制</div>');

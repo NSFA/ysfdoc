@@ -225,6 +225,9 @@ html, body {
     bottom: 0;
     left: 0;
     right: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .g-box .g-nav h3 {
@@ -246,6 +249,9 @@ html, body {
     bottom: 0;
     left: 0;
     right: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .g-box .g-nav h2:hover, .g-box .g-nav .select h2, .g-box .g-nav .selshow h2, .g-box .g-nav .over h2, .g-box .g-nav h3:hover, .g-box .g-nav .select h3 {
